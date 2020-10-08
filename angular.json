@@ -28,6 +28,10 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/primeicons/primeicons.css",
+              "./node_modules/primeng/resources/themes/bootstrap4-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +127,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "helpdesk"
+    }
+  },
+  "defaultProject": "helpdesk",
+  "cli": {
+    "analytics": "595f26c8-7fb7-42c2-9295-1d5c5dbb1863"
+  }
 }
