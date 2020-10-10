@@ -33,4 +33,8 @@ export class UserService {
     return this.http.get<User[]>(`${HELP_DESK_API}/api/user/${id}`);
   }
 
+  delete(id: string): Observable<User[]> {
+    return this.http.delete<User[]>(`${HELP_DESK_API}/api/user/${id}`);
+  }
+
 }
