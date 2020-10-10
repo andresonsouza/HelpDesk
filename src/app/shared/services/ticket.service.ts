@@ -32,4 +32,13 @@ export class TicketService {
   delete(id: string): Observable<Ticket[]> {
     return this.http.delete<Ticket[]>(`${HELP_DESK_API}/api/ticket/${id}`);
   }
+
+  findByParams(page: number, count: number, assignedToMe: boolean, t: Ticket): Observable<Ticket[]> {
+    t.number = t.number == null ? 0 : t.number;
+    t.title = t.title === '' ? 'uninformed' : t.title;
+    t.status = t.status === '' ? 'uninformed' : t.status;
+    t.priority = t.priority === '' ? 'uninformed' : t.priority;
+
+    return this.http.get<Ticket[]>(`${HELP_DESK_API}/api/ticket/${page}/${count}/${t.number}/${t.title}/${t.status}/${t.priority}/${assignedToMe}`);
+  }
 }
