@@ -21,7 +21,7 @@ body {
 .wrapper .sidebar {
   width: 200px;
   height: 100%;
-  background: #4b4276;
+  background: #1F2E32;
   padding: 30px 0px;
   position: fixed;
 }
@@ -41,7 +41,7 @@ body {
 }
 
 .wrapper .sidebar ul li a {
-  color: #bdb8d7;
+  color: #fff;
   display: block;
 }
 
@@ -50,7 +50,7 @@ body {
 }
 
 .wrapper .sidebar ul li:hover {
-  background-color: #594f8d;
+  background-color:#34495e;
 }
 
 .wrapper .sidebar ul li:hover a {
@@ -101,7 +101,7 @@ body {
 }
 
 :host ::ng-deep .toolbar.p-toolbar {
-  background: #0984e3;
+  background: #16a085;
   height: 71px;
   margin-bottom: 20px;
   border-radius: 0;
@@ -110,4 +110,12 @@ body {
 
 .user-name {
   color: #ffffff;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  filter: invert(80%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
 }
