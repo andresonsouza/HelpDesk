@@ -23,4 +23,9 @@ export class UserService {
       return this.http.post<User[]>(`${HELP_DESK_API}/api/user`, user);
     }
   }
+
+  findAll(page: number, count: number): Observable<User[]> {
+    return this.http.get<User[]>(`${HELP_DESK_API}/api/user/${page}/${count}`);
+  }
+
 }
