@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Ticket } from '../models/ticket.model';
 import { Observable } from 'rxjs';
-import { tick } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +19,17 @@ export class TicketService {
       ticket.status = 'New';
       return this.http.post<Ticket[]>(`${HELP_DESK_API}/api/ticket`, ticket);
     }
+  }
+
+  findAll(page: number, count: number): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${HELP_DESK_API}/api/ticket/${page}/${count}`);
+  }
+
+  findById(id: string): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${HELP_DESK_API}/api/ticket/${id}`);
+  }
+
+  delete(id: string): Observable<Ticket[]> {
+    return this.http.delete<Ticket[]>(`${HELP_DESK_API}/api/ticket/${id}`);
   }
 }
