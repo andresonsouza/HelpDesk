@@ -41,4 +41,8 @@ export class TicketService {
 
     return this.http.get<Ticket[]>(`${HELP_DESK_API}/api/ticket/${page}/${count}/${t.number}/${t.title}/${t.status}/${t.priority}/${assignedToMe}`);
   }
+
+  changeStatus(status: string, ticket: Ticket): Observable<Ticket[]> {
+    return this.http.put<Ticket[]>(`${HELP_DESK_API}/api/ticket/${ticket.id}/${status}`, ticket);
+  }
 }
