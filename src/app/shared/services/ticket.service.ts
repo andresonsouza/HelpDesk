@@ -45,4 +45,8 @@ export class TicketService {
   changeStatus(status: string, ticket: Ticket): Observable<Ticket[]> {
     return this.http.put<Ticket[]>(`${HELP_DESK_API}/api/ticket/${ticket.id}/${status}`, ticket);
   }
+
+  summary(): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${HELP_DESK_API}/api/ticket/summary`);
+  }
 }
