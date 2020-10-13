@@ -16,6 +16,8 @@ import { LoginComponent } from './components/security/login/login.component';
 import { UserService } from './shared/services/user.service';
 import { SharedService } from './shared/services/shared.service';
 import { AuthInterceptor } from './components/security/auth.interceptor';
+import { AuthGuard } from './components/security/auth.guard';
+import { UserNewComponent } from './components/user-new/user-new.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { AuthInterceptor } from './components/security/auth.interceptor';
     MenuComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    UserNewComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { AuthInterceptor } from './components/security/auth.interceptor';
   providers: [
     UserService,
     SharedService,
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

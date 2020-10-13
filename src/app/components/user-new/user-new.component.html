@@ -1,0 +1,73 @@
+<div class="panel-container-login p-shadow-8">
+  <p-panel>
+    <p-header class="panel-title">
+      New User
+    </p-header>
+
+    <div class="p-fluid p-formgrid">
+      <form #form="ngForm" (ngSubmit)="register()">
+        <div [ngClass]="classCss" role="alert" *ngIf="message">
+          <strong>{{ message.text }}</strong>
+        </div>
+
+        <div class="p-field" [ngClass]="getFormGroupClass(email.invalid,email.dirty)">
+          <label for="inputEmail">Email</label>
+          <span class="p-input-icon-right">
+            <i class="pi pi-user"></i>
+            <input type="email"
+              type="email"
+              [(ngModel)]="user.email"
+              name="email"
+              class="form-control"
+              id="inputEmail"
+              #email="ngModel"
+              pInputText />
+            <span class="help-block" *ngIf="email.invalid  && email.dirty">Email is invalid </span>
+          </span>
+        </div>
+
+        <div class="p-field form-group" [ngClass]="getFormGroupClass(password.invalid,password.dirty)">
+          <label for="inputPassword">Password</label>
+          <span class="p-input-icon-right">
+            <i class="pi pi-lock"></i>
+            <input type="password"
+              [(ngModel)]="user.password"
+              name="password"
+              class="form-control"
+              id="inputPassword"
+              #password="ngModel"
+              required
+              pPassword />
+            <span class="help-block" *ngIf="password.invalid && password.dirty">Password is required</span>
+          </span>
+        </div>
+
+        <div [ngClass]="getFormGroupClass(profile.invalid,profile.dirty)">
+          <label for="inputProfile">Profile</label>
+          <p-dropdown
+            [options]="roles"
+            [(ngModel)]="user.profile"
+            placeholder="Select a Role"
+            optionLabel="name"
+            [showClear]="true"
+            optionLabel="profile"
+            name="profile"
+            id="inputProfile"
+            #profile="ngModel">
+          </p-dropdown>
+          <span class="help-block" *ngIf="profile.invalid && profile.dirty">Profile is required</span>
+        </div>
+
+        <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-12 p-md-3">
+            <button type="submit" [disabled]="!form.valid" pButton pRipple label="Add" class="p-button-raised"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </p-panel>
+</div>
+
+
+
+

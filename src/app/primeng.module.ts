@@ -13,6 +13,7 @@ import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   imports: [ ],
@@ -30,6 +31,7 @@ import { DialogModule } from 'primeng/dialog';
     SliderModule,
     ContextMenuModule,
     DialogModule,
+    DropdownModule
   ],
   declarations: []
 })
