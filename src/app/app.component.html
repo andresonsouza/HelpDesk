@@ -1,3 +1,12 @@
-<app-header></app-header>
-<app-menu></app-menu>
-<router-outlet></router-outlet>
+<div class="wrapper">
+  <app-sidenav [hidden]="!showTemplate"></app-sidenav>
+  <div class="main_content" [ngClass]="showContentWrapper()">
+    <section [hidden]="!showTemplate" class="content-header">
+      <app-header ></app-header>
+    </section>
+    <section class="content">
+
+      <router-outlet></router-outlet>
+    </section>
+  </div>
+</div>

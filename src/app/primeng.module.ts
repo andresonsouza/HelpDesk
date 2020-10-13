@@ -1,24 +1,36 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 
-import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
-import { SplitButtonModule } from 'primeng/splitbutton';
-import { SidebarModule } from 'primeng/sidebar';
-import { MenuModule } from 'primeng/menu';
+import { CardModule } from 'primeng/card';
+import { PanelModule } from 'primeng/panel';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+import { ToolbarModule } from 'primeng/toolbar';
+import { TableModule } from 'primeng/table';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { ToastModule } from 'primeng/toast';
+import { SliderModule } from 'primeng/slider';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
-  declarations: [],
-  imports: [],
+  imports: [ ],
   exports: [
     CommonModule,
-    BrowserModule,
-    ToolbarModule,
     ButtonModule,
-    SplitButtonModule,
-    SidebarModule,
-    MenuModule,
-  ]
+    CardModule,
+    PanelModule,
+    InputTextModule,
+    PasswordModule,
+    ToolbarModule,
+    TableModule,
+    ScrollPanelModule,
+    ToastModule,
+    SliderModule,
+    ContextMenuModule,
+    DialogModule,
+  ],
+  declarations: []
 })
 export class PrimengModule { }

@@ -1,0 +1,54 @@
+<div class="panel-container-login p-shadow-8">
+  <p-panel>
+    <p-header class="panel-title">
+      Help Desk
+    </p-header>
+
+    <div class="p-fluid p-formgrid">
+      <form #form="ngForm" (ngSubmit)="login()">
+        <div class="alert alert-error" role="alert" *ngIf="message">
+          <strong>Invalid email or password</strong>
+        </div>
+
+        <div class="p-field">
+          <label for="email">Email</label>
+          <span class="p-input-icon-right">
+            <i class="pi pi-user"></i>
+            <input type="email"
+              type="email"
+              [(ngModel)]="user.email"
+              name="email"
+              class="form-control"
+              id="inputEmail"
+              #email="ngModel"
+              pInputText />
+            <span class="help-block" *ngIf="email.invalid  && email.dirty">Email is invalid </span>
+          </span>
+        </div>
+
+        <div class="p-field form-group">
+          <label for="password">Password</label>
+          <span class="p-input-icon-right">
+            <i class="pi pi-lock"></i>
+            <input type="password"
+              [(ngModel)]="user.password"
+              name="password"
+              class="form-control"
+              id="inputPassword"
+              #password="ngModel"
+              required
+              pPassword />
+            <span class="help-block" *ngIf="password.invalid && password.dirty">Password is required</span>
+          </span>
+        </div>
+
+        <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-12 p-md-3">
+            <button type="submit" [disabled]="!form.valid" pButton pRipple label="Login" class="p-button-raised"></button>
+          </div>
+          <p-button type="submit" (click)="cancelLogin()" label="Cancel" styleClass="p-button-link"></p-button>
+        </div>
+      </form>
+    </div>
+  </p-panel>
+</div>
