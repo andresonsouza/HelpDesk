@@ -7,12 +7,15 @@ import { AppComponent } from './app.component';
 import { PrimengModule } from './primeng.module';
 import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/security/login/login.component';
+import { UserService } from './shared/services/user.service';
+import { SharedService } from './shared/services/shared.service';
+import { AuthInterceptor } from './components/security/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,15 @@ import { LoginComponent } from './components/security/login/login.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    UserService,
+    SharedService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
