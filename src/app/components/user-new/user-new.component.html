@@ -1,19 +1,19 @@
-<div class="panel-container-login p-shadow-8">
+<div class="panel-container p-shadow-2">
   <p-panel>
-    <p-header class="panel-title">
+    <p-header class="register-title">
       New User
     </p-header>
 
     <div class="p-fluid p-formgrid">
       <form #form="ngForm" (ngSubmit)="register()">
-        <div [ngClass]="classCss" role="alert" *ngIf="message">
+        <!-- <div [ngClass]="classCss" role="alert" *ngIf="message">
           <strong>{{ message.text }}</strong>
-        </div>
+        </div> -->
 
         <div class="p-field" [ngClass]="getFormGroupClass(email.invalid,email.dirty)">
           <label for="inputEmail">Email</label>
           <span class="p-input-icon-right">
-            <i class="pi pi-user"></i>
+            <i class="pi pi-envelope"></i>
             <input type="email"
               type="email"
               [(ngModel)]="user.email"
