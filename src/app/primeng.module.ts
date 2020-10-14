@@ -14,6 +14,7 @@ import { SliderModule } from 'primeng/slider';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
   imports: [ ],
@@ -31,7 +32,8 @@ import { DropdownModule } from 'primeng/dropdown';
     SliderModule,
     ContextMenuModule,
     DialogModule,
-    DropdownModule
+    DropdownModule,
+    MultiSelectModule
   ],
   declarations: []
 })

@@ -22,8 +22,8 @@ export class UserNewComponent implements OnInit {
   message: {};
   classCss: {};
 
-  roles: User[];
-  selectedRole: User;
+  roles: any[];
+  selectedRole: string;
 
   constructor(
     private userService: UserService,
@@ -31,10 +31,10 @@ export class UserNewComponent implements OnInit {
     this.shared = SharedService.getInstance();
 
     this.roles = [
-      { id: null, profile: 'ROLE_ADMIN', email: null, password: null },
-      { id: '', profile: 'ROLE_CUSTOMER', email: '', password: '' },
-      { id: '', profile: 'ROLE_TECHNICIAN', email: '', password: '' },
-    ];
+      {label: 'ADMIN', value: 'ROLE_ADMIN'},
+      {label: 'CUSTOMER', value: 'ROLE_CUSTOMER'},
+      {label: 'TECHNICIAN', value: 'ROLE_TECHNICIAN'}
+  ];
   }
 
   ngOnInit() {

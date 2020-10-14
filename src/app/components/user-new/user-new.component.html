@@ -45,17 +45,18 @@
         <div [ngClass]="getFormGroupClass(profile.invalid,profile.dirty)">
           <label for="inputProfile">Profile</label>
           <p-dropdown
-            [options]="roles"
-            [(ngModel)]="user.profile"
-            placeholder="Select a Role"
-            optionLabel="name"
-            [showClear]="true"
-            optionLabel="profile"
-            name="profile"
-            id="inputProfile"
-            #profile="ngModel">
-          </p-dropdown>
-          <span class="help-block" *ngIf="profile.invalid && profile.dirty">Profile is required</span>
+          editable="true"
+          class="form-control select2"
+          [options]="roles"
+          [(ngModel)]="user.profile"
+          name="profile"
+          placeholder="Select a Role"
+          [showClear]="true"
+          #profile="ngModel"
+          required>
+        </p-dropdown>
+        <span class="help-block" *ngIf="profile.invalid && profile.dirty">Profile is required</span>
+        <p>Selected Role: {{user.profile || 'none'}}</p>
         </div>
 
         <div class="p-fluid p-formgrid p-grid">
