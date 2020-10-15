@@ -13,8 +13,10 @@ import { ToastModule } from 'primeng/toast';
 import { SliderModule } from 'primeng/slider';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   imports: [ ],
@@ -32,8 +34,10 @@ import { MultiSelectModule } from 'primeng/multiselect';
     SliderModule,
     ContextMenuModule,
     DialogModule,
+    ConfirmDialogModule,
     DropdownModule,
-    MultiSelectModule
+    MultiSelectModule,
+
   ],
   declarations: []
 })

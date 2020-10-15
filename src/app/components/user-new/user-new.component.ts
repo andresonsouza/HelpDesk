@@ -5,7 +5,6 @@ import { User } from './../../shared/models/user.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { SelectItem } from 'primeng/api';
 
 @Component({
   selector: 'app-user-new',
@@ -13,7 +12,6 @@ import { SelectItem } from 'primeng/api';
   styleUrls: ['./user-new.component.scss']
 })
 export class UserNewComponent implements OnInit {
-
   @ViewChild('form')
   form: NgForm;
 
@@ -31,20 +29,20 @@ export class UserNewComponent implements OnInit {
     this.shared = SharedService.getInstance();
 
     this.roles = [
-      {label: 'ADMIN', value: 'ROLE_ADMIN'},
-      {label: 'CUSTOMER', value: 'ROLE_CUSTOMER'},
-      {label: 'TECHNICIAN', value: 'ROLE_TECHNICIAN'}
-  ];
+      { label: 'ADMIN', value: 'ROLE_ADMIN' },
+      { label: 'CUSTOMER', value: 'ROLE_CUSTOMER' },
+      { label: 'TECHNICIAN', value: 'ROLE_TECHNICIAN' }
+    ];
   }
 
-  ngOnInit() {
-    let id: string = this.route.snapshot.params.id;
-    if (id != undefined) {
+  ngOnInit(): void {
+    const id: string = this.route.snapshot.params.id;
+    if (id !== undefined) {
       this.findById(id);
     }
   }
 
-  findById(id: string) {
+  findById(id: string): void {
     this.userService.findById(id).subscribe((responseApi: ResponseApi) => {
       this.user = responseApi.data;
       this.user.password = '';
@@ -56,7 +54,7 @@ export class UserNewComponent implements OnInit {
     });
   }
 
-  register() {
+  register(): void {
     this.message = {};
     this.userService.createOrUpdate(this.user).subscribe((responseApi: ResponseApi) => {
       this.user = new User();
@@ -82,7 +80,7 @@ export class UserNewComponent implements OnInit {
     };
   }
 
-  private showMessage(message: { type: string, text: string }): void {
+  showMessage(message: { type: string, text: string }): void {
     this.message = message;
     this.buildClasses(message.type);
     setTimeout(() => {
@@ -90,7 +88,7 @@ export class UserNewComponent implements OnInit {
     }, 3000);
   }
 
-  private buildClasses(type: string): void {
+  buildClasses(type: string): void {
     this.classCss = {
       alert: true
     };

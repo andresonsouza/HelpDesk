@@ -6,9 +6,9 @@
 
     <div class="p-fluid p-formgrid">
       <form #form="ngForm" (ngSubmit)="register()">
-        <!-- <div [ngClass]="classCss" role="alert" *ngIf="message">
-          <strong>{{ message.text }}</strong>
-        </div> -->
+        <div [ngClass]="classCss" role="alert" *ngIf="message">
+          <!-- <strong>{{ message.text }}</strong> -->
+        </div>
 
         <div class="p-field" [ngClass]="getFormGroupClass(email.invalid,email.dirty)">
           <label for="inputEmail">Email</label>
@@ -56,7 +56,7 @@
           required>
         </p-dropdown>
         <span class="help-block" *ngIf="profile.invalid && profile.dirty">Profile is required</span>
-        <p>Selected Role: {{user.profile || 'none'}}</p>
+        <!-- <p>Selected Role: {{user.profile || 'none'}}</p> -->
         </div>
 
         <div class="p-fluid p-formgrid p-grid">

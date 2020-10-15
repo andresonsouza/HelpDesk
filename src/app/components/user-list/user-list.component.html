@@ -1,0 +1,51 @@
+<!-- <div>
+  <div>
+    <div>
+      <div>
+        <h3 >User List</h3>
+      </div>
+      <div>
+        <table>
+          <tr>
+            <th>Email</th>
+            <th>Profile</th>
+            <th style="width: 10px">&nbsp;</th>
+            <th style="width: 10px">&nbsp;</th>
+          </tr>
+          <tr *ngFor="let user of listUser">
+            <td>{{user.email}}</td>
+            <td>{{user.profile}}</td>
+            <td><p-button routerLink="../user-new">Edit</p-button></td>
+            <td><p-button (click)="delete(user.id)">Delete</p-button></td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <ul>
+          <li><a (click)="setPreviousPage($event)">&laquo;</a></li>
+          <li *ngFor="let p of pages; let i=index">
+            <a [ngClass]="{'pagination-focus':i==page}" href="" (click)="setPage(i,$event)">{{i+1}}</a>
+          </li>
+          <li><a (click)="setNextPage($event)">&raquo;</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<p-table [columns]="cols" [value]="listUser">
+  <ng-template pTemplate="header" let-columns>
+      <tr>
+          <th *ngFor="let col of columns">
+              {{col.header}}
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr>
+          <td *ngFor="let col of columns">
+              {{rowData[col.field]}}
+          </td>
+      </tr>
+  </ng-template>
+</p-table>
