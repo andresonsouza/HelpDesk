@@ -43,7 +43,7 @@ export class UserListComponent implements OnInit {
       this.pages = new Array(responseApi.data.totalPages);
 
       this.cols = [
-        { field: 'email', header: 'email' },
+        { field: 'email', header: 'Email' },
         { field: 'profile', header: 'Profile' },
       ];
     }, err => {
