@@ -19,7 +19,7 @@ import { AuthInterceptor } from './components/security/auth.interceptor';
 import { AuthGuard } from './components/security/auth.guard';
 import { UserNewComponent } from './components/user-new/user-new.component';
 import { UserListComponent } from './components/user-list/user-list.component';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -47,6 +47,7 @@ import { ConfirmationService } from 'primeng/api';
     SharedService,
     AuthGuard,
     ConfirmationService,
+    MessageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

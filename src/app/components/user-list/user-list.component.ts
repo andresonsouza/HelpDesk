@@ -5,6 +5,7 @@ import { SharedService } from '../../shared/services/shared.service';
 import { Router } from '@angular/router';
 import { DialogService } from 'src/app/shared/services/dialog.service';
 import { User } from 'src/app/shared/models/user.model';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-user-list',
@@ -21,13 +22,15 @@ export class UserListComponent implements OnInit {
   listUser: User[] = [];
 
   users: User[];
+  selectedUsers: User[];
 
   cols: any[];
 
   constructor(
     private dialogService: DialogService,
     private userService: UserService,
-    private router: Router) {
+    private router: Router,
+    private messageService: MessageService, private confirmationService: ConfirmationService) {
     this.shared = SharedService.getInstance();
   }
 
@@ -115,5 +118,18 @@ export class UserListComponent implements OnInit {
     },
       this.classCss['alert-' + type] = true;
   }
+
+  deleteSelectedUsers() {
+    this.confirmationService.confirm({
+        message: 'Are you sure you want to delete the selected products?',
+        header: 'Confirm',
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => {
+            this.products = this.products.filter(val => !this.selectedProducts.includes(val));
+            this.selectedProducts = null;
+            this.messageService.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
+        }
+    });
+}
 
 }

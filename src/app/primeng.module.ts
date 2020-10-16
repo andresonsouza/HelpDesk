@@ -16,7 +16,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { MessageService } from 'primeng/api';
+import { RatingModule } from 'primeng/rating';
 
 @NgModule({
   imports: [ ],
@@ -37,7 +37,7 @@ import { MessageService } from 'primeng/api';
     ConfirmDialogModule,
     DropdownModule,
     MultiSelectModule,
-
+    RatingModule
   ],
   declarations: []
 })
