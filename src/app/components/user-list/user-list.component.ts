@@ -30,7 +30,8 @@ export class UserListComponent implements OnInit {
     private dialogService: DialogService,
     private userService: UserService,
     private router: Router,
-    private messageService: MessageService, private confirmationService: ConfirmationService) {
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService) {
     this.shared = SharedService.getInstance();
   }
 
@@ -38,7 +39,7 @@ export class UserListComponent implements OnInit {
     this.findAll(this.page, this.count);
   }
 
-  findAll(page: number, count: number) {
+  findAll(page: number, count: number): void {
     this.userService.findAll(page, count)
       .subscribe(
         (responseApi: ResponseApi) => {
