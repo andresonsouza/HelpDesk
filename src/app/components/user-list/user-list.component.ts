@@ -40,21 +40,21 @@ export class UserListComponent implements OnInit {
 
   findAll(page: number, count: number) {
     this.userService.findAll(page, count)
-    .subscribe(
-      (responseApi: ResponseApi) => {
-      this.listUser = responseApi.data.content;
-      this.pages = new Array(responseApi.data.totalPages);
+      .subscribe(
+        (responseApi: ResponseApi) => {
+          this.listUser = responseApi.data.content;
+          this.pages = new Array(responseApi.data.totalPages);
 
-      this.cols = [
-        { field: 'email', header: 'Email' },
-        { field: 'profile', header: 'Profile' },
-      ];
-    }, err => {
-      this.showMessage({
-        type: 'error',
-        text: err.error.errors[0]
-      });
-    });
+          this.cols = [
+            { field: 'email', header: 'Email' },
+            { field: 'profile', header: 'Profile' },
+          ];
+        }, err => {
+          this.showMessage({
+            type: 'error',
+            text: err.error.errors[0]
+          });
+        });
   }
 
   edit(id: string): void {
@@ -118,18 +118,5 @@ export class UserListComponent implements OnInit {
     },
       this.classCss['alert-' + type] = true;
   }
-
-  deleteSelectedUsers() {
-    this.confirmationService.confirm({
-        message: 'Are you sure you want to delete the selected products?',
-        header: 'Confirm',
-        icon: 'pi pi-exclamation-triangle',
-        accept: () => {
-            this.products = this.products.filter(val => !this.selectedProducts.includes(val));
-            this.selectedProducts = null;
-            this.messageService.add({severity:'success', summary: 'Successful', detail: 'Products Deleted', life: 3000});
-        }
-    });
-}
 
 }
