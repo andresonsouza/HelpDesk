@@ -36,10 +36,10 @@
         <div class="p-formgroup-inline">
           <p-button (click)="setPreviousPage($event)" styleClass="p-button-text">&laquo;</p-button>
           <div *ngFor="let p of pages; let i=index">
-            <p-button type="button" [ngClass]="{'pagination-focus':i==page}" (click)="setPage(i,$event)">{{i+1}}
+            <p-button class="p-button-text" styleClass="p-button-text" [ngClass]="{'pagination-focus':i==page}" (click)="setPage(i,$event)">{{i+1}}
             </p-button>
           </div>
-          <p-button type="button" (click)="setNextPage($event)" styleClass="p-button-text">&raquo;</p-button>
+          <p-button (click)="setNextPage($event)" styleClass="p-button-text">&raquo;</p-button>
         </div>
       </div>
     </ng-template>
