@@ -18,7 +18,7 @@ export class UserListComponent implements OnInit {
   shared: SharedService;
   message: {};
   classCss: {};
-  listUser = [];
+  listUser: User[] = [];
 
   users: User[];
 

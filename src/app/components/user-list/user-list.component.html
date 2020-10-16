@@ -1,65 +1,113 @@
 <!-- <div>
-  <div>
-    <div>
-      <div>
-        <h3 >User List</h3>
-      </div>
-      <div>
-        <table>
-          <tr>
-            <th>Email</th>
-            <th>Profile</th>
-            <th style="width: 10px">&nbsp;</th>
-            <th style="width: 10px">&nbsp;</th>
-          </tr>
-          <tr *ngFor="let user of listUser">
-            <td>{{user.email}}</td>
-            <td>{{user.profile}}</td>
-            <td><p-button routerLink="../user-new">Edit</p-button></td>
-            <td><p-button (click)="delete(user.id)">Delete</p-button></td>
-          </tr>
-        </table>
-      </div>
-      <div>
-        <ul>
-          <li><a (click)="setPreviousPage($event)">&laquo;</a></li>
-          <li *ngFor="let p of pages; let i=index">
-            <a [ngClass]="{'pagination-focus':i==page}" href="" (click)="setPage(i,$event)">{{i+1}}</a>
-          </li>
-          <li><a (click)="setNextPage($event)">&raquo;</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<h1>Programmatic Control</h1>
-<div class="p-mb-3">
-  <p-button type="button" icon="pi pi-chevron-left" (click)="setPreviousPage($event)" styleClass="p-button-text">
-  </p-button>
-  <p-button type="button" icon="pi pi-refresh" styleClass="p-button-text"></p-button>
-  <p-button type="button" icon="pi pi-chevron-right" (click)="setNextPage($event)" styleClass="p-button-text">
-  </p-button>
+  <h3>User List</h3>
 </div>
-<p-table [columns]="cols" [value]="listUser">
-  <ng-template pTemplate="header" let-columns>
+
+<div>
+  <table>
     <tr>
-      <th *ngFor="let col of columns">
-        {{col.header}}
-      </th>
-      <th>
-        Actions
-      </th>
+      <th>Email</th>
+      <th>Profile</th>
+      <th style="width: 10px">&nbsp;</th>
+      <th style="width: 10px">&nbsp;</th>
     </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-rowData let-columns="columns">
-    <tr>
-      <td *ngFor="let col of columns">
-        {{rowData[col.field]}}
+    <tr *ngFor="let user of listUser">
+      <td>{{user.email}}</td>
+      <td>{{user.profile}}</td>
+      <td>
+        <p-button type="button" icon="pi pi-chevron-left" (click)="edit(user.id)">Edit</p-button>
       </td>
       <td>
-        <p-button routerLink="../user-new">Edit</p-button>
+        <p-button (click)="delete(user.id)">Delete</p-button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="p-mb-3">
+  <p-button (click)="setPreviousPage($event)" styleClass="p-button-text">&laquo;</p-button>
+  <div *ngFor="let p of pages; let i=index">
+    <p-button type="button" [ngClass]="{'pagination-focus':i==page}" (click)="setPage(i,$event)">{{i+1}}</p-button>
+  </div>
+  <p-button type="button" (click)="setNextPage($event)" styleClass="p-button-text">&raquo;</p-button>
+</div> -->
+
+<!-- <p-table [value]="listUser" styleClass="p-datatable-gridlines">
+  <ng-template pTemplate="caption">
+    Header
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Email</th>
+      <th>Profile</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-user>
+    <tr>
+      <td>{{user.email}}</td>
+      <td>{{user.profile}}</td>
+      <td>
+        <p-button type="button" icon="pi" (click)="edit(user.id)">Edit</p-button>
+        <p-button (click)="delete(user.id)">Delete</p-button>
       </td>
     </tr>
   </ng-template>
+  <ng-template pTemplate="summary">
+    Footer
+  </ng-template>
 </p-table>
+
+<div class="p-mb-3">
+  <p-button (click)="setPreviousPage($event)" styleClass="p-button-text">&laquo;</p-button>
+  <div *ngFor="let p of pages; let i=index">
+    <p-button type="button" [ngClass]="{'pagination-focus':i==page}" (click)="setPage(i,$event)">{{i+1}}</p-button>
+  </div>
+  <p-button type="button" (click)="setNextPage($event)" styleClass="p-button-text">&raquo;</p-button>
+</div> -->
+
+
+<div class="card-table">
+  <p-table #dt [columns]="cols" [value]="listUser" [paginator]="true" [rows]="5">
+
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+
+        <button pButton pRipple label="New user" routerLink="../user-new" icon="pi pi-plus" class=" p-d-inline-block p-mr-2"></button>
+
+        <span class="p-input-icon-right">
+          <i class="pi pi-search"></i>
+          <input type="text" pInputText size="30" placeholder="Buscar" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+        </span>
+
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Email</th>
+        <th>Profile</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{user.email}}</td>
+        <td>{{user.profile}}</td>
+        <td>
+          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
+          (click)="edit(user.id)"></button>
+          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+          (click)="delete(user.id)"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+</div>
+
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle">
+  <p-footer>
+    <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()"></button>
+    <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()"></button>
+  </p-footer>
+</p-confirmDialog>
