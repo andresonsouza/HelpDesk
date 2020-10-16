@@ -1,5 +1,5 @@
 <div class="card-table">
-  <p-table #dt [columns]="cols" [value]="listUser" styleClass="p-datatable-gridlines">
+  <p-table #dt [columns]="cols" [value]="listUser">
     <ng-template pTemplate="caption">
       <div class="p-d-flex p-ai-center p-jc-between">
         <button pButton pRipple label="New user" routerLink="../user-new" icon="pi pi-plus"
@@ -15,7 +15,7 @@
       <tr>
         <th>Email</th>
         <th>Profile</th>
-        <th>Actions</th>
+        <th style="width: 120px;"></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-user>
